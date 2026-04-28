@@ -1,17 +1,13 @@
-type Props = {
-  type: string;
-  mode: string;
-  body: string;
-};
+import type { DemoReply } from "@/lib/types";
 
-export default function ReplyCard({ type, mode, body }: Props) {
+export function ReplyCard({ reply }: { reply: DemoReply }) {
   return (
-    <div className="panel">
-      <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
-        <strong>{type}</strong>
-        <span className="muted">{mode}</span>
+    <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
+      <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wide text-muted">
+        <span>{reply.type}</span>
+        <span>{reply.mode}</span>
       </div>
-      <p className="muted">{body}</p>
+      <p className="mt-2 text-muted">{reply.text}</p>
     </div>
   );
 }
