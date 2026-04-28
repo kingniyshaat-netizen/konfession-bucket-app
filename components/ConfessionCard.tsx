@@ -1,23 +1,21 @@
-type Props = {
-  id: string;
-  title: string;
-  body: string;
-  avenue: string;
-  mode: string;
-  intent: string;
-};
+import Link from "next/link";
+import type { DemoPost } from "@/lib/types";
 
-export default function ConfessionCard({ id, title, body, avenue, mode, intent }: Props) {
+export function ConfessionCard({ post }: { post: DemoPost }) {
   return (
-    <div className="panel">
-      <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 10 }}>
-        <span className="muted">{avenue}</span>
-        <span className="muted">{mode}</span>
-        <span className="muted">{intent}</span>
+    <article className="panel p-5">
+      <div className="flex flex-wrap gap-2 text-xs font-bold uppercase tracking-wide text-muted">
+        <span>{post.tag}</span>
+        <span>•</span>
+        <span>{post.mode}</span>
       </div>
-      <h3 style={{ marginTop: 0 }}>{title}</h3>
-      <p className="muted">{body}</p>
-      <a className="btn" href={`/post/${id}`} style={{ marginTop: 12 }}>Open Thread</a>
-    </div>
+      <h3 className="mt-3 text-xl font-black">{post.title}</h3>
+      <p className="mt-2 text-muted">{post.body}</p>
+      <div className="mt-4 flex gap-3">
+        <Link href={`/post/${post.id}`} className="btn-secondary">Open Thread</Link>
+        <button className="btn-secondary">Save</button>
+        <button className="btn-secondary">Report</button>
+      </div>
+    </article>
   );
 }
