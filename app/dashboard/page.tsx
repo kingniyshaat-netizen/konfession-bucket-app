@@ -1,22 +1,11 @@
-import SiteHeader from "@/components/SiteHeader";
-import { samplePosts } from "@/lib/mock-data";
-import ConfessionCard from "@/components/ConfessionCard";
-
 export default function DashboardPage() {
   return (
-    <>
-      <SiteHeader />
-      <main className="wrap grid">
-        <div className="panel">
-          <h2>Dashboard</h2>
-          <p className="muted">Recent activity, saved posts, and quick actions live here.</p>
-        </div>
-        <div className="grid">
-          {samplePosts.map((post) => (
-            <ConfessionCard key={post.id} {...post} />
-          ))}
-        </div>
-      </main>
-    </>
-  );
-}
+    <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+      {[
+        ["My Konfessions", "Posts you have created"],
+        ["Saved Threads", "Bookmarks and revisit list"],
+        ["Reports", "Your report history"],
+        ["Avenues", "Followed lounges and activity"],
+      ].map(([title, text]) => (
+        <div key={title} className="panel p-6">
+          <h2 className="text-xl font-black">{
