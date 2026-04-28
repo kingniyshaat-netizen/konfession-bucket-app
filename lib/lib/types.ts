@@ -1,31 +1,26 @@
-export type ReplyType = "advice" | "support" | "shared";
-export type DisplayMode = "anonymous" | "named";
-export type SensitivityLevel = "Low" | "Medium" | "High";
-
-export interface Reply {
-  type: ReplyType;
-  mode: DisplayMode;
+export interface DemoReply {
+  id: string;
+  type: "advice" | "support" | "shared";
+  mode: "anonymous" | "named";
   text: string;
 }
 
-export interface ConfessionPost {
+export interface DemoPost {
   id: string;
-  mode: DisplayMode;
-  display: string;
-  tag: ReplyType;
+  avenueSlug: string;
   title: string;
   body: string;
-  reactions: string[];
-  replies: Reply[];
+  mode: "anonymous" | "named";
+  tag: "advice" | "support" | "shared";
+  display: string;
+  replies: DemoReply[];
 }
 
 export interface Avenue {
-  id: string;
+  slug: string;
   title: string;
   subtitle: string;
   purpose: string;
   tone: string;
-  sensitivity: SensitivityLevel;
-  sampleTypes: string;
-  posts: ConfessionPost[];
+  sensitivity: "Low" | "Medium" | "High";
 }
